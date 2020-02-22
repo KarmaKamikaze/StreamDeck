@@ -42,6 +42,9 @@ def button_click(caller):
     else:
         return
 
+    time.sleep(0.2)
+    write_report("\0\0\0\0\0\0\0\0")
+
 
 # load icons
 image = Image.open("MuteAudio.png")
