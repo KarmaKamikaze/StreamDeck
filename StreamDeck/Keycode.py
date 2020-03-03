@@ -9,11 +9,23 @@
 
 class Keycode:
     
-    # comments are for danish layout
+    # Comments are for danish layout
 
-    KEY_A = "\0\0\04\0\0\0\0\0" # a and A
-    KEY_B = "\0\0\05\0\0\0\0\0" # b and B
-    KEY_C = "\0\0\06\0\0\0\0\0" # c and C
+    # Modifier masks - used for the first byte in the HID report.
+    # NOTE: The second byte in the report is reserved, 0x00
+
+    KEY_MOD_LCTRL = "01"
+    KEY_MOD_LSHIFT = "02"
+    KEY_MOD_LALT = "04"
+    KEY_MOD_LMETA = "08"
+    KEY_MOD_RCTRL = "10"
+    KEY_MOD_RSHIFT = "20"
+    KEY_MOD_RALT = "40"
+    KEY_MOD_RMETA = "80"
+
+    KEY_A = "04" # a and A
+    KEY_B = "05" # b and B
+    KEY_C = "06" # c and C
     KEY_D = "\0\0\07\0\0\0\0\0" # d and D
     KEY_E = "\0\0\08\0\0\0\0\0" # e and E
     KEY_F = "\0\0\09\0\0\0\0\0" # f and F
@@ -81,19 +93,19 @@ class Keycode:
     KEY_F11 = "\0\0\44\0\0\0\0\0" # F11
     KEY_F12 = "\0\0\45\0\0\0\0\0" # F12
 
-    KEY_Sysrq = "\0\0\46\0\0\0\0\0" # Print screen
-    KEY_Scrolllock = "\0\0\47\0\0\0\0\0" # Scroll Lock
-    KEY_Pause = "\0\0\48\0\0\0\0\0" # Pause
-    KEY_Insert = "\0\0\49\0\0\0\0\0" # Insert
-    KEY_Home = "\0\0\4a\0\0\0\0\0" # Home
-    KEY_Pageup = "\0\0\4b\0\0\0\0\0" # Page up
-    KEY_Delete = "\0\0\4c\0\0\0\0\0" # Delete
-    KET_End = "\0\0\4d\0\0\0\0\0" # End
-    KEY_Pagedown = "\0\0\4e\0\0\0\0\0" # Page down
-    KEY_Right = "\0\0\4f\0\0\0\0\0" # Right arrow
-    KEY_Left = "\0\0\50\0\0\0\0\0" # Left arrow
-    KEY_Down = "\0\0\51\0\0\0\0\0" # Down arrow
-    KEY_Up = "\0\0\52\0\0\0\0\0" # Up arrow
+    KEY_Sysrq = "46" # Print screen
+    KEY_Scrolllock = "47" # Scroll Lock
+    KEY_Pause = "48" # Pause
+    KEY_Insert = "49" # Insert
+    KEY_Home = "4a" # Home
+    KEY_Pageup = "4b" # Page up
+    KEY_Delete = "4c" # Delete
+    KET_End = "4d" # End
+    KEY_Pagedown = "4e" # Page down
+    KEY_Right = "4f" # Right arrow
+    KEY_Left = "50" # Left arrow
+    KEY_Down = "51" # Down arrow
+    KEY_Up = "52" # Up arrow
 
     KEY_Numlock = "53" # Keyboard Num Lock and Clear
     KEY_KPslash = "54" # Keypad /
@@ -111,7 +123,7 @@ class Keycode:
     KEY_KP8 = "60" # Keypad 8 and Up Arrow
     KEY_KP9 = "61" # Keypad 9 and Page Up
     KEY_KP0 = "62" # Keypad 0 and Insert
-    KEY_KPdot "63" # Keypad . and Delete
+    KEY_KPdot = "63" # Keypad . and Delete
 
     KEY_102ND = "64" # Keyboard Non-US \ and |
     KEY_Compose = "65" # Keyboard Application
@@ -259,3 +271,71 @@ class Keycode:
     KEY_MEDIA_COFFEE = "f9"
     KEY_MEDIA_REFRESH = "fa"
     KEY_MEDIA_CALC = "fb"
+
+    # A multifunctional method that takes an infinite amount of arguments.
+    # Depending on how many keypresses are sent to the method, it will determine
+    # how many arguments are used.
+    def KeyCombine(*args):
+        if len(args) == 1: # one keypress
+            return "\0\0\{}\0\0\0\0\0".format(args[0])
+        elif len(args) == 2: # two keypresses
+            if (args[0] == Keycode.KEY_MOD_LSHIFT) or \
+            (args[0] == Keycode.KEY_MOD_LCTRL) or \
+            (args[0] == Keycode.KEY_MOD_LALT or \
+            (args[0] == Keycode.KEY_MOD_RSHIFT) or \
+            (args[0] == Keycode.KEY_MOD_RCTRL) or \
+            (args[0] == Keycode.KEY_MOD_RALT)):
+                return "\{0}\0\{1}\0\0\0\0\0".format(args[0], args[1])
+            else:
+                return "\0\0\{0}\{1}\0\0\0\0".format(args[0], args[1])
+        elif len(args) == 3: # three keypresses
+            if (args[0] == Keycode.KEY_MOD_LSHIFT) or \
+            (args[0] == Keycode.KEY_MOD_LCTRL) or \
+            (args[0] == Keycode.KEY_MOD_LALT or \
+            (args[0] == Keycode.KEY_MOD_RSHIFT) or \
+            (args[0] == Keycode.KEY_MOD_RCTRL) or \
+            (args[0] == Keycode.KEY_MOD_RALT)):
+                return "\{0}\0\{1}\{2}\0\0\0\0".format(args[0], args[1], args[2])
+            else:
+                return "\0\0\{0}\{1}\{2}\0\0\0".format(args[0], args[1], args[2])
+        elif len(args) == 4: # four keypresses
+            if (args[0] == Keycode.KEY_MOD_LSHIFT) or \
+            (args[0] == Keycode.KEY_MOD_LCTRL) or \
+            (args[0] == Keycode.KEY_MOD_LALT or \
+            (args[0] == Keycode.KEY_MOD_RSHIFT) or \
+            (args[0] == Keycode.KEY_MOD_RCTRL) or \
+            (args[0] == Keycode.KEY_MOD_RALT)):
+                return "\{0}\0\{1}\{2}\{3}\0\0\0".format(args[0], args[1], args[2], args[3])
+            else:
+                return "\0\0\{0}\{1}\{2}\{3}\0\0".format(args[0], args[1], args[2], args[3])
+        elif len(args) == 5: # five keypresses
+            if (args[0] == Keycode.KEY_MOD_LSHIFT) or \
+            (args[0] == Keycode.KEY_MOD_LCTRL) or \
+            (args[0] == Keycode.KEY_MOD_LALT or \
+            (args[0] == Keycode.KEY_MOD_RSHIFT) or \
+            (args[0] == Keycode.KEY_MOD_RCTRL) or \
+            (args[0] == Keycode.KEY_MOD_RALT)):
+                return "\{0}\0\{1}\{2}\{3}\{4}\0\0".format(args[0], args[1], args[2], args[3], args[4])
+            else:
+                return "\0\0\{0}\{1}\{2}\{3}\{4}\0".format(args[0], args[1], args[2], args[3], args[4])
+        elif len(args) == 6: # six keypresses
+            if (args[0] == Keycode.KEY_MOD_LSHIFT) or \
+            (args[0] == Keycode.KEY_MOD_LCTRL) or \
+            (args[0] == Keycode.KEY_MOD_LALT or \
+            (args[0] == Keycode.KEY_MOD_RSHIFT) or \
+            (args[0] == Keycode.KEY_MOD_RCTRL) or \
+            (args[0] == Keycode.KEY_MOD_RALT)):
+                return "\{0}\0\{1}\{2}\{3}\{4}\{5}\0".format(args[0], args[1], args[2], args[3], args[4], args[5])
+            else:
+                return "\0\0\{0}\{1}\{2}\{3}\{4}\{5}".format(args[0], args[1], args[2], args[3], args[4], args[5])
+        elif len(args) == 7: # seven keypresses
+            if (args[0] == Keycode.KEY_MOD_LSHIFT) or \
+            (args[0] == Keycode.KEY_MOD_LCTRL) or \
+            (args[0] == Keycode.KEY_MOD_LALT or \
+            (args[0] == Keycode.KEY_MOD_RSHIFT) or \
+            (args[0] == Keycode.KEY_MOD_RCTRL) or \
+            (args[0] == Keycode.KEY_MOD_RALT)):
+                return "\{0}\0\{1}\{2}\{3}\{4}\{5}\{6}".format(args[0], args[1], args[2], args[3], args[4], args[5], args[6])
+            else:
+                print("Error: Only 6 non-modifier keypresses are possible simultaneously.")
+                pass
