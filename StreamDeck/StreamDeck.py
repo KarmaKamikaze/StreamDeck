@@ -28,7 +28,7 @@ def button_click(caller):
     print("Button: {} was clicked, sending keypress".format(caller))
 
     if "MuteAudio" == caller:
-        write_report(Keycode.KEY_Pause)
+        write_report(Keycode.KeyCombine(Keycode.KEY_Pause))
 
     elif "BardSpells" == caller:
         MuteAudio.grid_forget()
