@@ -28,7 +28,7 @@ def button_click(caller):
     print("Button: {} was clicked, sending keypress".format(caller))
 
     if "MuteAudio" == caller:
-        write_report(Keycode.Pause)
+        write_report(Keycode.KEY_Pause)
 
     elif "BardSpells" == caller:
         MuteAudio.grid_forget()
@@ -41,6 +41,9 @@ def button_click(caller):
         ViciousMockery.grid(row = 0, column = 1)
     else:
         return
+
+    time.sleep(0.2)
+    write_report("\0\0\0\0\0\0\0\0")
 
 
 # load icons
