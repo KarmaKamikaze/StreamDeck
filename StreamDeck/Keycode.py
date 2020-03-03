@@ -238,3 +238,24 @@ class Keycode:
     KEY_RightSHIFT = "e5" # Keyboard Right Shift
     KEY_RightALT = "e6" # Keyboard Right Alt
     KEY_RightMETA = "e7" # Keyboard Right GUI
+
+    KEY_MEDIA_PLAYPAUSE = "e8"
+    KEY_MEDIA_STOPCD = "e9"
+    KEY_MEDIA_PREVIOUSSONG = "ea"
+    KEY_MEDIA_NEXTSONG = "eb"
+    KEY_MEDIA_EJECTCD = "ec"
+    KEY_MEDIA_VOLUMEUP = "ed"
+    KEY_MEDIA_VOLUMEDOWN = "ee"
+    KEY_MEDIA_MUTE = "ef"
+    KEY_MEDIA_WWW = "f0"
+    KEY_MEDIA_BACK = "f1"
+    KEY_MEDIA_FORWARD = "f2"
+    KEY_MEDIA_STOP = "f3"
+    KEY_MEDIA_FIND = "f4"
+    KEY_MEDIA_SCROLLUP = "f5"
+    KEY_MEDIA_SCROLLDOWN = "f6"
+    KEY_MEDIA_EDIT = "f7"
+    KEY_MEDIA_SLEEP = "f8"
+    KEY_MEDIA_COFFEE = "f9"
+    KEY_MEDIA_REFRESH = "fa"
+    KEY_MEDIA_CALC = "fb"
