@@ -24,6 +24,9 @@
     <Compile Include="Keycode.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Pages.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="StreamDeck.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />

@@ -1,4 +1,12 @@
-# USB HID Keyboard scan codes as per USB spec 1.11
+# Keyboard report format:
+# Byte 0: Keyboard modifier bits (SHIFT, ALT, CTRL etc)
+# Byte 1: reserved
+# Byte 2-7: Up to six keyboard usage indexes representing the keys that are 
+#           currently "pressed". 
+#           Order is not important, a key is either pressed (present in the 
+#           buffer) or not pressed.
+#
+# USB HID Keyboard scan codes as per USB spec 1.12
 # plus some additional codes
 #
 # Created by KarmaKamikaze, 2020
@@ -23,12 +31,12 @@ class Keycode:
     KEY_MOD_RALT = "40"
     KEY_MOD_RMETA = "80"
 
-    KEY_A = "04" # a and A
-    KEY_B = "05" # b and B
-    KEY_C = "06" # c and C
-    KEY_D = "07" # d and D
-    KEY_E = "08" # e and E
-    KEY_F = "09" # f and F
+    KEY_A = chr(4) # a and A
+    KEY_B = "5" # b and B
+    KEY_C = "6" # c and C
+    KEY_D = "7" # d and D
+    KEY_E = "8" # e and E
+    KEY_F = "9" # f and F
     KEY_G = "0a" # g and G
     KEY_H = "0b" # h and H
     KEY_I = "0c" # i and I
@@ -277,7 +285,7 @@ class Keycode:
     # how many arguments are used.
     def KeyCombine(*args):
         if len(args) == 1: # one keypress
-            return "\0\0\{}\0\0\0\0\0".format(args[0])
+            return "\0\0{}\0\0\0\0\0".format(args[0])
         elif len(args) == 2: # two keypresses
             if (args[0] == Keycode.KEY_MOD_LSHIFT) or \
             (args[0] == Keycode.KEY_MOD_LCTRL) or \
