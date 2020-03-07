@@ -1,3 +1,11 @@
+# Keyboard report format:
+# Byte 0: Keyboard modifier bits (SHIFT, ALT, CTRL etc)
+# Byte 1: reserved
+# Byte 2-7: Up to six keyboard usage indexes representing the keys that are 
+#           currently "pressed". 
+#           Order is not important, a key is either pressed (present in the 
+#           buffer) or not pressed.
+#
 # USB HID Keyboard scan codes as per USB spec 1.11
 # plus some additional codes
 #
