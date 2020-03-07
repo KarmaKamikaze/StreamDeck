@@ -1,4 +1,5 @@
 # modules
+import time
 import tkinter as tk
 from PIL import Image, ImageTk
 from Keycode import Keycode
@@ -103,7 +104,7 @@ def button_click(caller):
     elif "Button E" == caller:
         write_report(Keycode.KeyCombine(Keycode.KEY_E))
     else:
-        write_report(Keycode.Keycombine(Keycode.KEY_F))
+        write_report(Keycode.KeyCombine(Keycode.KEY_F))
 
     # reset keypress to none
     time.sleep(0.2)

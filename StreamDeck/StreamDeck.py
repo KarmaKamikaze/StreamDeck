@@ -1,5 +1,5 @@
 # modules
-import time
+import os
 from tkinter import *
 from Pages import StartPage, PageOne, PageTwo
 
@@ -32,5 +32,8 @@ class TkinterWindow(Tk):
 # start the event loop
 window = TkinterWindow()
 window.title("PiDeck") # sets title for tkinter windows
-window.iconbitmap(r'images/PiDeck_icon.ico') # sets applicatoin icon
+if "nt" == os.name: # checks and sets applicatoin icon depending on Windows or Linux
+    window.iconbitmap(r'images/PiDeck_icon.ico')
+else:
+    window.iconbitmap(r'@images/PiDeck_icon.xbm')
 window.mainloop()
