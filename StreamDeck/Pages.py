@@ -72,15 +72,125 @@ class PageOne(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
-        label = tk.Label(self, text="Page One")
-        label.pack(padx=10, pady=10)
+        # load icons
+        image = Image.open('images/button-back.png')
+        button_image_back = ImageTk.PhotoImage(image)
+
+        image = Image.open('images/button-g.png')
+        button_image_g = ImageTk.PhotoImage(image)
+
+        image = Image.open('images/button-h.png')
+        button_image_h = ImageTk.PhotoImage(image)
+
+        image = Image.open('images/button-i.png')
+        button_image_i = ImageTk.PhotoImage(image)
+
+        image = Image.open('images/button-j.png')
+        button_image_j = ImageTk.PhotoImage(image)
+
+        image = Image.open('images/button-k.png')
+        button_image_k = ImageTk.PhotoImage(image)
+
+        image = Image.open('images/button-l.png')
+        button_image_l = ImageTk.PhotoImage(image)
+
+        image = Image.open('images/button-m.png')
+        button_image_m = ImageTk.PhotoImage(image)
+
+        # add buttons
+        start_page = tk.Button(self, compound = tk.CENTER, image = button_image_back, text = "Back", command = lambda: controller.show_frame(StartPage))
+        start_page.grid(row = 0, column = 0)
+        start_page.image = button_image_back
+
+        button_g = tk.Button(self, compound = tk.CENTER, image = button_image_g, text = "Button G", command = lambda: button_click('Button G'))
+        button_g.grid(row = 0, column = 2)
+        button_g.image = button_image_g
+
+        button_h = tk.Button(self, compound = tk.CENTER, image = button_image_h, text = "Button H", command = lambda: button_click('Button H'))
+        button_h.grid(row = 0, column = 2)
+        button_h.image = button_image_h
+
+        button_i = tk.Button(self, compound = tk.CENTER, image = button_image_i, text = "Button I", command = lambda: button_click('Button I'))
+        button_i.grid(row = 0, column = 3)
+        button_i.image = button_image_i
+
+        button_j = tk.Button(self, compound = tk.CENTER, image = button_image_j, text = "Button J", command = lambda: button_click('Button J'))
+        button_j.grid(row = 1, column = 0)
+        button_j.image = button_image_j
+
+        button_k = tk.Button(self, compound = tk.CENTER, image = button_image_k, text = "Button K", command = lambda: button_click('Button K'))
+        button_k.grid(row = 1, column = 1)
+        button_k.image = button_image_k
+
+        button_l = tk.Button(self, compound = tk.CENTER, image = button_image_l, text = "Button L", command = lambda: button_click('Button L'))
+        button_l.grid(row = 1, column = 2)
+        button_l.image = button_image_l
+
+        button_m = tk.Button(self, compound = tk.CENTER, image = button_image_m, text = "Button M", command = lambda: button_click('Button M'))
+        button_m.grid(row = 1, column = 3)
+        button_m.image = button_image_m
 
 class PageTwo(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
-        label = tk.Label(self, text="Page Two")
-        label.pack(padx=10, pady=10)
+        # load icons
+        image = Image.open('images/button-back.png')
+        button_image_back = ImageTk.PhotoImage(image)
+
+        image = Image.open('images/button-n.png')
+        button_image_n = ImageTk.PhotoImage(image)
+
+        image = Image.open('images/button-o.png')
+        button_image_o = ImageTk.PhotoImage(image)
+
+        image = Image.open('images/button-p.png')
+        button_image_p = ImageTk.PhotoImage(image)
+
+        image = Image.open('images/button-q.png')
+        button_image_q = ImageTk.PhotoImage(image)
+
+        image = Image.open('images/button-r.png')
+        button_image_r = ImageTk.PhotoImage(image)
+
+        image = Image.open('images/button-s.png')
+        button_image_s = ImageTk.PhotoImage(image)
+
+        image = Image.open('images/button-t.png')
+        button_image_t = ImageTk.PhotoImage(image)
+
+        # add buttons
+        start_page = tk.Button(self, compound = tk.CENTER, image = button_image_back, text = "Back", command = lambda: controller.show_frame(StartPage))
+        start_page.grid(row = 0, column = 0)
+        start_page.image = button_image_back
+
+        button_n = tk.Button(self, compound = tk.CENTER, image = button_image_n, text = "Button N", command = lambda: button_click('Button N'))
+        button_n.grid(row = 0, column = 2)
+        button_n.image = button_image_n
+
+        button_o = tk.Button(self, compound = tk.CENTER, image = button_image_o, text = "Button O", command = lambda: button_click('Button O'))
+        button_o.grid(row = 0, column = 2)
+        button_o.image = button_image_o
+
+        button_p = tk.Button(self, compound = tk.CENTER, image = button_image_p, text = "Button P", command = lambda: button_click('Button P'))
+        button_p.grid(row = 0, column = 3)
+        button_p.image = button_image_p
+
+        button_q = tk.Button(self, compound = tk.CENTER, image = button_image_q, text = "Button Q", command = lambda: button_click('Button Q'))
+        button_q.grid(row = 1, column = 0)
+        button_q.image = button_image_q
+
+        button_r = tk.Button(self, compound = tk.CENTER, image = button_image_r, text = "Button R", command = lambda: button_click('Button R'))
+        button_r.grid(row = 1, column = 1)
+        button_r.image = button_image_r
+
+        button_s = tk.Button(self, compound = tk.CENTER, image = button_image_s, text = "Button S", command = lambda: button_click('Button S'))
+        button_s.grid(row = 1, column = 2)
+        button_s.image = button_image_s
+
+        button_t = tk.Button(self, compound = tk.CENTER, image = button_image_t, text = "Button T", command = lambda: button_click('Button T'))
+        button_t.grid(row = 1, column = 3)
+        button_t.image = button_image_t
 
 
 # function to send the key data
@@ -103,8 +213,36 @@ def button_click(caller):
         write_report(Keycode.KeyCombine(Keycode.KEY_D))
     elif "Button E" == caller:
         write_report(Keycode.KeyCombine(Keycode.KEY_E))
-    else:
+    elif "Button F" == caller:
         write_report(Keycode.KeyCombine(Keycode.KEY_F))
+    elif "Button G" == caller:
+        write_report(Keycode.KeyCombine(Keycode.KEY_G))
+    elif "Button H" == caller:
+        write_report(Keycode.KeyCombine(Keycode.KEY_H))
+    elif "Button I" == caller:
+        write_report(Keycode.KeyCombine(Keycode.KEY_I))
+    elif "Button J" == caller:
+        write_report(Keycode.KeyCombine(Keycode.KEY_J))
+    elif "Button K" == caller:
+        write_report(Keycode.KeyCombine(Keycode.KEY_K))
+    elif "Button L" == caller:
+        write_report(Keycode.KeyCombine(Keycode.KEY_L))
+    elif "Button M" == caller:
+        write_report(Keycode.KeyCombine(Keycode.KEY_M))
+    elif "Button N" == caller:
+        write_report(Keycode.KeyCombine(Keycode.KEY_N))
+    elif "Button O" == caller:
+        write_report(Keycode.KeyCombine(Keycode.KEY_O))
+    elif "Button P" == caller:
+        write_report(Keycode.KeyCombine(Keycode.KEY_P))
+    elif "Button Q" == caller:
+        write_report(Keycode.KeyCombine(Keycode.KEY_Q))
+    elif "Button R" == caller:
+        write_report(Keycode.KeyCombine(Keycode.KEY_R))
+    elif "Button S" == caller:
+        write_report(Keycode.KeyCombine(Keycode.KEY_S))
+    else:
+        write_report(Keycode.KeyCombine(Keycode.KEY_T))
 
     # reset keypress to none
     time.sleep(0.2)
