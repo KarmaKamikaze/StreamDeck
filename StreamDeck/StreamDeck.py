@@ -31,4 +31,6 @@ class TkinterWindow(Tk):
 
 # start the event loop
 window = TkinterWindow()
+window.title("PiDeck") # sets title for tkinter windows
+window.iconbitmap(r'images/PiDeck_icon.ico') # sets applicatoin icon
 window.mainloop()
