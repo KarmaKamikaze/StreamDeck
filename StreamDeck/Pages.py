@@ -103,7 +103,7 @@ class PageOne(tk.Frame):
         start_page.image = button_image_back
 
         button_g = tk.Button(self, compound = tk.CENTER, image = button_image_g, text = "Button G", command = lambda: button_click('Button G'))
-        button_g.grid(row = 0, column = 2)
+        button_g.grid(row = 0, column = 1)
         button_g.image = button_image_g
 
         button_h = tk.Button(self, compound = tk.CENTER, image = button_image_h, text = "Button H", command = lambda: button_click('Button H'))
@@ -165,7 +165,7 @@ class PageTwo(tk.Frame):
         start_page.image = button_image_back
 
         button_n = tk.Button(self, compound = tk.CENTER, image = button_image_n, text = "Button N", command = lambda: button_click('Button N'))
-        button_n.grid(row = 0, column = 2)
+        button_n.grid(row = 0, column = 1)
         button_n.image = button_image_n
 
         button_o = tk.Button(self, compound = tk.CENTER, image = button_image_o, text = "Button O", command = lambda: button_click('Button O'))
@@ -204,9 +204,9 @@ def button_click(caller):
     print("Button: {} was clicked, sending keypress".format(caller))
 
     if "Button A" == caller:
-        write_report(Keycode.KeyCombine(Keycode.KEY_A))
+        write_report(Keycode.KeyCombine(Keycode.KEY_MOD_LSHIFT, Keycode.KEY_A))
     elif "Button B" == caller:
-        write_report(Keycode.KeyCombine(Keycode.KEY_B))
+        write_report(Keycode.KeyCombine(Keycode.KEY_B, Keycode.KEY_C))
     elif "Button C" == caller:
         write_report(Keycode.KeyCombine(Keycode.KEY_C))
     elif "Button D" == caller:

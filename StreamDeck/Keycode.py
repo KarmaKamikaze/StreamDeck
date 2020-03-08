@@ -14,6 +14,7 @@
 #
 # Adapted from:
 # https://source.android.com/devices/input/keyboard-devices.html
+# https://www.usb.org/document-library/hid-usage-tables-112
 
 class Keycode:
     
@@ -22,14 +23,16 @@ class Keycode:
     # Modifier masks - used for the first byte in the HID report.
     # NOTE: The second byte in the report is reserved, 0x00
 
-    KEY_MOD_LCTRL = "01"
-    KEY_MOD_LSHIFT = "02"
-    KEY_MOD_LALT = "04"
-    KEY_MOD_LMETA = "08"
-    KEY_MOD_RCTRL = "10"
-    KEY_MOD_RSHIFT = "20"
-    KEY_MOD_RALT = "40"
-    KEY_MOD_RMETA = "80"
+
+    # Modifier keys can be added (+) together to represent multiple modifier presses at once.
+    KEY_MOD_LCTRL = chr(1)
+    KEY_MOD_LSHIFT = chr(2)
+    KEY_MOD_LALT = chr(4)
+    KEY_MOD_LMETA = chr(8)
+    KEY_MOD_RCTRL = chr(16)
+    KEY_MOD_RSHIFT = chr(32)
+    KEY_MOD_RALT = chr(64)
+    KEY_MOD_RMETA = chr(128)
 
     KEY_A = chr(4) # a and A
     KEY_B = chr(5) # b and B
@@ -275,9 +278,9 @@ class Keycode:
             (args[0] == Keycode.KEY_MOD_RSHIFT) or \
             (args[0] == Keycode.KEY_MOD_RCTRL) or \
             (args[0] == Keycode.KEY_MOD_RALT)):
-                return "\{0}\0\{1}\0\0\0\0\0".format(args[0], args[1])
+                return "{0}\0{1}\0\0\0\0\0".format(args[0], args[1])
             else:
-                return "\0\0\{0}\{1}\0\0\0\0".format(args[0], args[1])
+                return "\0\0{0}{1}\0\0\0\0".format(args[0], args[1])
         elif len(args) == 3: # three keypresses
             if (args[0] == Keycode.KEY_MOD_LSHIFT) or \
             (args[0] == Keycode.KEY_MOD_LCTRL) or \
@@ -285,9 +288,9 @@ class Keycode:
             (args[0] == Keycode.KEY_MOD_RSHIFT) or \
             (args[0] == Keycode.KEY_MOD_RCTRL) or \
             (args[0] == Keycode.KEY_MOD_RALT)):
-                return "\{0}\0\{1}\{2}\0\0\0\0".format(args[0], args[1], args[2])
+                return "{0}\0{1}{2}\0\0\0\0".format(args[0], args[1], args[2])
             else:
-                return "\0\0\{0}\{1}\{2}\0\0\0".format(args[0], args[1], args[2])
+                return "\0\0{0}{1}{2}\0\0\0".format(args[0], args[1], args[2])
         elif len(args) == 4: # four keypresses
             if (args[0] == Keycode.KEY_MOD_LSHIFT) or \
             (args[0] == Keycode.KEY_MOD_LCTRL) or \
@@ -295,9 +298,9 @@ class Keycode:
             (args[0] == Keycode.KEY_MOD_RSHIFT) or \
             (args[0] == Keycode.KEY_MOD_RCTRL) or \
             (args[0] == Keycode.KEY_MOD_RALT)):
-                return "\{0}\0\{1}\{2}\{3}\0\0\0".format(args[0], args[1], args[2], args[3])
+                return "{0}\0{1}{2}{3}\0\0\0".format(args[0], args[1], args[2], args[3])
             else:
-                return "\0\0\{0}\{1}\{2}\{3}\0\0".format(args[0], args[1], args[2], args[3])
+                return "\0\0{0}{1}{2}{3}\0\0".format(args[0], args[1], args[2], args[3])
         elif len(args) == 5: # five keypresses
             if (args[0] == Keycode.KEY_MOD_LSHIFT) or \
             (args[0] == Keycode.KEY_MOD_LCTRL) or \
@@ -305,9 +308,9 @@ class Keycode:
             (args[0] == Keycode.KEY_MOD_RSHIFT) or \
             (args[0] == Keycode.KEY_MOD_RCTRL) or \
             (args[0] == Keycode.KEY_MOD_RALT)):
-                return "\{0}\0\{1}\{2}\{3}\{4}\0\0".format(args[0], args[1], args[2], args[3], args[4])
+                return "{0}\0{1}{2}{3}{4}\0\0".format(args[0], args[1], args[2], args[3], args[4])
             else:
-                return "\0\0\{0}\{1}\{2}\{3}\{4}\0".format(args[0], args[1], args[2], args[3], args[4])
+                return "\0\0{0}{1}{2}{3}{4}\0".format(args[0], args[1], args[2], args[3], args[4])
         elif len(args) == 6: # six keypresses
             if (args[0] == Keycode.KEY_MOD_LSHIFT) or \
             (args[0] == Keycode.KEY_MOD_LCTRL) or \
@@ -315,9 +318,9 @@ class Keycode:
             (args[0] == Keycode.KEY_MOD_RSHIFT) or \
             (args[0] == Keycode.KEY_MOD_RCTRL) or \
             (args[0] == Keycode.KEY_MOD_RALT)):
-                return "\{0}\0\{1}\{2}\{3}\{4}\{5}\0".format(args[0], args[1], args[2], args[3], args[4], args[5])
+                return "{0}\0{1}{2}{3}{4}{5}\0".format(args[0], args[1], args[2], args[3], args[4], args[5])
             else:
-                return "\0\0\{0}\{1}\{2}\{3}\{4}\{5}".format(args[0], args[1], args[2], args[3], args[4], args[5])
+                return "\0\0{0}{1}{2}{3}{4}{5}".format(args[0], args[1], args[2], args[3], args[4], args[5])
         elif len(args) == 7: # seven keypresses
             if (args[0] == Keycode.KEY_MOD_LSHIFT) or \
             (args[0] == Keycode.KEY_MOD_LCTRL) or \
@@ -325,7 +328,7 @@ class Keycode:
             (args[0] == Keycode.KEY_MOD_RSHIFT) or \
             (args[0] == Keycode.KEY_MOD_RCTRL) or \
             (args[0] == Keycode.KEY_MOD_RALT)):
-                return "\{0}\0\{1}\{2}\{3}\{4}\{5}\{6}".format(args[0], args[1], args[2], args[3], args[4], args[5], args[6])
+                return "{0}\0{1}{2}{3}{4}{5}{6}".format(args[0], args[1], args[2], args[3], args[4], args[5], args[6])
             else:
                 print("Error: Only 6 non-modifier keypresses are possible simultaneously.")
                 pass
