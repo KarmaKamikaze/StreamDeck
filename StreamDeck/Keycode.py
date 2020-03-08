@@ -23,8 +23,8 @@ class Keycode:
     # Modifier masks - used for the first byte in the HID report.
     # NOTE: The second byte in the report is reserved, 0x00
 
-    # Modifier keys can be added (+) together to represent multiple modifier presses at once.
 
+    # Modifier keys can be added (+) together to represent multiple modifier presses at once.
     KEY_MOD_LCTRL = chr(1)
     KEY_MOD_LSHIFT = chr(2)
     KEY_MOD_LALT = chr(4)
